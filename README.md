@@ -283,4 +283,4 @@ python voice_cloner.py --presets -r voice_samples/sample_1.wav
 
 ## 📄 License
 
-This project uses Chatterbox TTS under the MIT License. Generated audio includes watermarking as per Resemble AI's responsible AI practices.
+This project uses Chatterbox TTS under the MIT License. This implementation is also released under the MIT License. Generated audio includes watermarking as per Resemble AI's responsible AI practices.
