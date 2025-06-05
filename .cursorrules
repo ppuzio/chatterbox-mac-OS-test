@@ -1,0 +1,69 @@
+## Continuous Improvement
+
+When I type "IMPROVE RULESET" or end my query with "??" (double question mark):
+
+1. Analyze our interaction to identify potential improvements to this ruleset
+2. Immediately prepare an edit to the `.cursorrules` file with your suggested changes
+3. Apply these changes directly (no need to explain the changes in detail first)
+4. Focus on:
+   - Missing context that would have been helpful
+   - Patterns in my questions that could be better addressed
+   - Technical specifications that could be more precise
+   - New patterns that emerged from recent work
+   - Utility extraction opportunities
+   - Performance optimization insights
+
+## Mac Development Environment
+
+- Assume M4 Max Mac Studio with 128GB RAM unless specified otherwise
+- For PyTorch/ML libraries, always include Mac compatibility patches:
+  ```python
+  # Mac compatibility patch
+  original_torch_load = torch.load
+  def patched_torch_load(f, map_location=None, **kwargs):
+      if map_location is None:
+          map_location = torch.device('cpu')
+      return original_torch_load(f, map_location=map_location, **kwargs)
+  torch.load = patched_torch_load
+  ```
+- Check for MPS availability but fall back to CPU for compatibility
+- Watch for CUDA deserialization errors and provide workarounds
+
+## Library Limitations & Constraints
+
+- When working with new libraries, proactively investigate token/size limits
+- Test edge cases early (e.g., maximum input length, batch processing limits)
+- Create diagnostic functions to find optimal parameters
+- Document discovered limitations in comments for future reference
+
+## Iterative Problem Solving
+
+When initial approaches have issues (artifacts, quality problems, performance):
+
+1. **Identify the root cause** - don't just add complexity
+2. **Create multiple targeted approaches** rather than one over-engineered solution
+3. **Compare approaches with clear examples** (before/after, side-by-side)
+4. **Use scientific method**: test one variable at a time
+5. **Always provide file naming that clearly indicates the approach** (e.g., `_optimal`, `_smooth`, `_basic`)
+
+## Audio/Media Processing Patterns
+
+- Concatenation artifacts are common - test multiple joining strategies
+- Crossfading can introduce artifacts - sometimes simple gaps work better
+- Maximize chunk sizes to minimize seam points
+- Provide comparison outputs so user can evaluate quality differences
+- Include duration and processing stats in output for transparency
+
+## Background Processing
+
+- For long-running tasks, provide progress indicators and status checks
+- Use descriptive process names and clear output directories
+- Always provide ways to check on background job status
+- Offer both incremental and batch processing options
+
+## Code Organization
+
+- Create focused, single-purpose scripts for each approach
+- Use descriptive function names that explain the strategy
+- Include extensive logging and progress feedback
+- Make scripts independently runnable with clear parameters
